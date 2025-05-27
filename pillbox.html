@@ -9,7 +9,14 @@
 </head>
 <body class="bg-gradient-to-br from-indigo-200 to-purple-300 min-h-screen font-sans">
   <div class="container mx-auto p-6">
-    <h1 class="text-4xl font-bold text-center text-indigo-900 mb-8">TheSmartPillBox</h1>
+    <h1 class="text-4xl font-bold text-center text-indigo-900 mb-4">TheSmartPillBox</h1>
+
+    <!-- Enable Notification Button -->
+    <div class="text-center mb-6">
+      <button onclick="enableNotifications()" class="bg-green-600 text-white px-4 py-2 rounded-xl hover:bg-green-700 transition">
+        Enable Notifications
+      </button>
+    </div>
 
     <!-- Notification Area -->
     <div id="notifications" class="mb-6 text-center text-xl text-green-700 font-semibold"></div>
@@ -55,9 +62,14 @@
   </div>
 
   <script>
-    // Request permission for browser notifications
-    if (Notification.permission !== "granted") {
-      Notification.requestPermission();
+    function enableNotifications() {
+      Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+          alert("✅ Notifications enabled. We'll remind you at 10:00 AM and 3:10 PM!");
+        } else {
+          alert("❌ Notifications denied. We can't remind you unless you enable them.");
+        }
+      });
     }
 
     function notifyUser(message) {
