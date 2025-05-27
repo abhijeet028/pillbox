@@ -65,7 +65,7 @@
     function enableNotifications() {
       Notification.requestPermission().then(permission => {
         if (permission === "granted") {
-          alert("✅ Notifications enabled. We'll remind you at 10:00 AM and 3:10 PM!");
+          alert("✅ Notifications enabled. We'll remind you at 10:00 AM and 3:30 PM!");
         } else {
           alert("❌ Notifications denied. We can't remind you unless you enable them.");
         }
@@ -84,17 +84,17 @@
       const minutes = now.getMinutes();
 
       const notif = document.getElementById('notifications');
-      notif.innerText = ''; // Clear message
+      notif.innerText = '';
 
       if (hours === 10 && minutes === 0) {
         notif.innerText = '🕙 Time to eat medicine from 1st compartment!';
         notifyUser('Time to eat medicine from 1st compartment!');
-      } else if (hours === 15 && minutes === 10) {
-        notif.innerText = '🕒 Time to eat medicine from 2nd compartment!';
+      } else if (hours === 15 && minutes === 30) {
+        notif.innerText = '🕞 Time to eat medicine from 2nd compartment!';
         notifyUser('Time to eat medicine from 2nd compartment!');
       }
     }
-    setInterval(checkNotifications, 60000); // every 60 seconds
+    setInterval(checkNotifications, 60000);
 
     const medData = [];
     const weightData = [];
